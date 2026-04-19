@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Lumina AI - Student Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "error-container": "#ffdad6",
+                      "surface-container-low": "#f2f3fa",
+                      "primary": "#00497d",
+                      "tertiary-fixed": "#a3f69c",
+                      "inverse-primary": "#9fcaff",
+                      "error": "#ba1a1a",
+                      "on-surface": "#191c20",
+                      "surface-container-high": "#e6e8ee",
+                      "on-secondary-fixed-variant": "#324863",
+                      "on-surface-variant": "#414750",
+                      "on-primary-fixed-variant": "#00497d",
+                      "on-background": "#191c20",
+                      "surface-bright": "#f8f9ff",
+                      "secondary": "#4a607c",
+                      "secondary-container": "#c8dfff",
+                      "on-tertiary-container": "#99ec93",
+                      "inverse-surface": "#2e3135",
+                      "inverse-on-surface": "#eff0f7",
+                      "on-error": "#ffffff",
+                      "on-tertiary-fixed-variant": "#005312",
+                      "secondary-fixed": "#d1e4ff",
+                      "on-primary-fixed": "#001d36",
+                      "tertiary-container": "#1c6d24",
+                      "primary-container": "#0061a4",
+                      "background": "#f8f9ff",
+                      "on-secondary": "#ffffff",
+                      "surface-tint": "#0061a4",
+                      "outline": "#717782",
+                      "outline-variant": "#c1c7d2",
+                      "on-tertiary-fixed": "#002204",
+                      "surface-container-highest": "#e1e2e8",
+                      "primary-fixed-dim": "#9fcaff",
+                      "tertiary-fixed-dim": "#88d982",
+                      "surface-dim": "#d8dae0",
+                      "surface-container": "#eceef4",
+                      "surface": "#f8f9ff",
+                      "secondary-fixed-dim": "#b1c8e8",
+                      "surface-container-lowest": "#ffffff",
+                      "tertiary": "#005312",
+                      "on-error-container": "#93000a",
+                      "on-primary": "#ffffff",
+                      "on-secondary-fixed": "#021d35",
+                      "surface-variant": "#e1e2e8",
+                      "on-tertiary": "#ffffff",
+                      "primary-fixed": "#d1e4ff",
+                      "on-secondary-container": "#4c627e",
+                      "on-primary-container": "#c0dbff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "fontFamily": {
+                      "headline": ["Plus Jakarta Sans"],
+                      "body": ["Manrope"],
+                      "label": ["Manrope"]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        body { font-family: 'Manrope', sans-serif; }
+        h1, h2, h3, h4 { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface">
+<!-- SideNavBar -->
+<aside class="h-full w-64 fixed left-0 top-0 bg-[#f2f3fa] dark:bg-slate-900 flex flex-col h-screen py-6 px-4 z-50">
+<div class="mb-10 px-4">
+<h1 class="text-xl font-bold text-[#0061A4] dark:text-blue-400">Lumina AI</h1>
+<p class="text-xs text-slate-500 font-medium tracking-wider">Premium Learning</p>
+</div>
+<nav class="flex-1 space-y-1">
+<!-- Dashboard (Active) -->
+<a class="flex items-center gap-3 px-4 py-3 text-[#0061A4] dark:text-blue-300 font-bold border-r-4 border-[#0061A4] hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors scale-95 active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-['Plus_Jakarta_Sans'] font-medium text-sm">Dashboard</span>
+</a>
+<!-- AI Tutor -->
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors scale-95 active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined">psychology</span>
+<span class="font-['Plus_Jakarta_Sans'] font-medium text-sm">AI Tutor</span>
+</a>
+<!-- Mock Tests -->
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors scale-95 active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined">quiz</span>
+<span class="font-['Plus_Jakarta_Sans'] font-medium text-sm">Mock Tests</span>
+</a>
+<!-- Active Session -->
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors scale-95 active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined">timer</span>
+<span class="font-['Plus_Jakarta_Sans'] font-medium text-sm">Active Session</span>
+</a>
+<!-- Analysis -->
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors scale-95 active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined">insights</span>
+<span class="font-['Plus_Jakarta_Sans'] font-medium text-sm">Analysis</span>
+</a>
+</nav>
+<div class="mt-auto space-y-1">
+<div class="px-4 mb-4">
+<button class="w-full py-3 bg-primary text-on-primary rounded-full font-bold text-sm hover:opacity-90 transition-opacity">
+                    Upgrade to Pro
+                </button>
+</div>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-['Plus_Jakarta_Sans'] font-medium text-sm">Settings</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined">help_outline</span>
+<span class="font-['Plus_Jakarta_Sans'] font-medium text-sm">Help</span>
+</a>
+</div>
+</aside>
+<!-- TopAppBar -->
+<header class="fixed top-0 right-0 w-[calc(100%-16rem)] bg-[#f8f9ff]/70 dark:bg-slate-950/70 backdrop-blur-xl flex justify-between items-center h-16 px-8 z-40">
+<div class="flex items-center gap-8">
+<div class="relative">
+<span class="absolute inset-y-0 left-3 flex items-center text-outline">
+<span class="material-symbols-outlined text-xl">search</span>
+</span>
+<input class="bg-surface-container-high border-none rounded-lg py-2 pl-10 pr-4 w-64 focus:ring-2 focus:ring-primary text-sm" placeholder="Search lessons..." type="text"/>
+</div>
+<nav class="hidden md:flex gap-6">
+<a class="font-['Plus_Jakarta_Sans'] font-semibold text-sm text-slate-600 hover:text-[#0061A4] transition-all" href="#">Curriculum</a>
+<a class="font-['Plus_Jakarta_Sans'] font-semibold text-sm text-slate-600 hover:text-[#0061A4] transition-all" href="#">Resources</a>
+</nav>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex gap-4">
+<button class="p-2 text-slate-600 hover:bg-surface-container-high rounded-full transition-colors opacity-80 hover:opacity-100">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 text-slate-600 hover:bg-surface-container-high rounded-full transition-colors opacity-80 hover:opacity-100">
+<span class="material-symbols-outlined">dark_mode</span>
+</button>
+</div>
+<button class="bg-primary px-5 py-2 rounded-full text-on-primary font-semibold text-sm hover:opacity-90 transition-opacity">
+                Start Session
+            </button>
+<img alt="Student avatar" class="w-10 h-10 rounded-full border-2 border-primary-container object-cover" data-alt="Close-up portrait of a friendly young male student with a bright smile in a professional studio setting with soft lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBlclwHSgNxECZaH-eyfQIc_Shb7tbWCLs1UFxHWra0cMvE2kTiDtm3QoW2TJ0FEHLROSLbNkOfM8nWoUUVowF5JOJpqpNp4EtHmzr8rlD04jx8WrZZRavGO2xzbnamQ04pV0Grxed5hmPE94h9utu-VcqVTqmGP8wNFOrh2LgSuIK4icHIdz81zhD5lMz_BHMT0GXyX0dZrrllHJFX47-3OwLJukMPKpY63tWWwDPoH0tlJlrGLF3fjZL6K8HptrhmzvVreALM9LM"/>
+</div>
+</header>
+<!-- Main Content -->
+<main class="ml-64 pt-24 px-8 pb-12 min-h-screen">
+<!-- Welcome Banner -->
+<section class="mb-10 flex flex-col md:flex-row gap-8 items-end">
+<div class="flex-1">
+<h2 class="text-5xl font-extrabold tracking-tight text-on-surface mb-2">Welcome back, Alex.</h2>
+<p class="text-xl text-on-surface-variant max-w-xl font-medium">You've completed <span class="text-primary font-bold">72%</span> of your weekly goals. Ready to tackle Quantum Mechanics today?</p>
+</div>
+<div class="bg-secondary-container p-6 rounded-xl flex items-center gap-4 max-w-xs transition-transform hover:scale-[1.02]">
+<div class="bg-primary w-12 h-12 rounded-full flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">bolt</span>
+</div>
+<div>
+<p class="text-xs font-bold text-on-secondary-container uppercase tracking-widest mb-1">Current Streak</p>
+<p class="text-2xl font-black text-on-secondary-container">14 Days</p>
+</div>
+</div>
+</section>
+<!-- Dashboard Bento Grid -->
+<div class="grid grid-cols-12 gap-8">
+<!-- Daily Progress Tracker (Span 8) -->
+<div class="col-span-12 lg:col-span-8 bg-surface-container-lowest rounded-xl p-8 shadow-sm">
+<div class="flex justify-between items-center mb-10">
+<h3 class="text-2xl font-bold">Daily Learning Progress</h3>
+<button class="text-primary font-semibold text-sm flex items-center gap-1">
+                        View Details <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Circle 1 -->
+<div class="flex flex-col items-center text-center">
+<div class="relative w-32 h-32 mb-4">
+<svg class="w-full h-full transform -rotate-90">
+<circle class="text-surface-container-high" cx="64" cy="64" fill="transparent" r="56" stroke="currentColor" stroke-width="12"></circle>
+<circle class="text-primary" cx="64" cy="64" fill="transparent" r="56" stroke="currentColor" stroke-dasharray="351.8" stroke-dashoffset="88" stroke-width="12"></circle>
+</svg>
+<div class="absolute inset-0 flex items-center justify-center text-xl font-bold">75%</div>
+</div>
+<h4 class="font-bold text-on-surface">Physics Mastery</h4>
+<p class="text-xs text-on-surface-variant">3/4 Modules done</p>
+</div>
+<!-- Circle 2 -->
+<div class="flex flex-col items-center text-center">
+<div class="relative w-32 h-32 mb-4">
+<svg class="w-full h-full transform -rotate-90">
+<circle class="text-surface-container-high" cx="64" cy="64" fill="transparent" r="56" stroke="currentColor" stroke-width="12"></circle>
+<circle class="text-tertiary" cx="64" cy="64" fill="transparent" r="56" stroke="currentColor" stroke-dasharray="351.8" stroke-dashoffset="193" stroke-width="12"></circle>
+</svg>
+<div class="absolute inset-0 flex items-center justify-center text-xl font-bold">45%</div>
+</div>
+<h4 class="font-bold text-on-surface">Calculus II</h4>
+<p class="text-xs text-on-surface-variant">2.5h Studied today</p>
+</div>
+<!-- Circle 3 -->
+<div class="flex flex-col items-center text-center">
+<div class="relative w-32 h-32 mb-4">
+<svg class="w-full h-full transform -rotate-90">
+<circle class="text-surface-container-high" cx="64" cy="64" fill="transparent" r="56" stroke="currentColor" stroke-width="12"></circle>
+<circle class="text-secondary" cx="64" cy="64" fill="transparent" r="56" stroke="currentColor" stroke-dasharray="351.8" stroke-dashoffset="35" stroke-width="12"></circle>
+</svg>
+<div class="absolute inset-0 flex items-center justify-center text-xl font-bold">90%</div>
+</div>
+<h4 class="font-bold text-on-surface">AI Ethics</h4>
+<p class="text-xs text-on-surface-variant">Final Quiz pending</p>
+</div>
+</div>
+</div>
+<!-- Quick Help Widget (Span 4) -->
+<div class="col-span-12 lg:col-span-4 bg-primary rounded-xl p-8 text-on-primary relative overflow-hidden flex flex-col justify-between">
+<!-- Abstract Background Ornament -->
+<div class="absolute -right-12 -top-12 w-48 h-48 bg-white/10 rounded-full blur-3xl"></div>
+<div>
+<div class="bg-white/20 w-12 h-12 rounded-xl flex items-center justify-center mb-6 backdrop-blur-md">
+<span class="material-symbols-outlined text-3xl">psychology</span>
+</div>
+<h3 class="text-2xl font-bold mb-3">Stuck on a problem?</h3>
+<p class="text-primary-fixed font-medium mb-8">Your AI Tutor is active and ready to help you solve equations or explain complex theories in real-time.</p>
+</div>
+<button class="w-full py-4 bg-surface-container-lowest text-primary rounded-full font-bold flex items-center justify-center gap-2 transition-transform hover:scale-[1.02]">
+                    Start Chatting <span class="material-symbols-outlined">send</span>
+</button>
+</div>
+<!-- Upcoming Tasks (Span 5) -->
+<div class="col-span-12 lg:col-span-5 bg-surface-container-low rounded-xl p-8">
+<div class="flex justify-between items-center mb-8">
+<h3 class="text-xl font-bold">Upcoming Tasks</h3>
+<span class="bg-surface-container-high px-3 py-1 rounded-full text-xs font-bold text-on-surface-variant">4 TOTAL</span>
+</div>
+<div class="space-y-4">
+<!-- Task Item 1 -->
+<div class="bg-surface-container-lowest p-4 rounded-xl flex items-center gap-4 transition-all hover:translate-x-2">
+<div class="w-10 h-10 rounded-full bg-error-container text-error flex items-center justify-center">
+<span class="material-symbols-outlined text-lg">event</span>
+</div>
+<div class="flex-1">
+<p class="font-bold text-sm">Physics Mock Exam</p>
+<p class="text-xs text-on-surface-variant">Tomorrow, 10:00 AM</p>
+</div>
+<span class="material-symbols-outlined text-outline">chevron_right</span>
+</div>
+<!-- Task Item 2 -->
+<div class="bg-surface-container-lowest p-4 rounded-xl flex items-center gap-4 transition-all hover:translate-x-2">
+<div class="w-10 h-10 rounded-full bg-tertiary-fixed text-tertiary flex items-center justify-center">
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">article</span>
+</div>
+<div class="flex-1">
+<p class="font-bold text-sm">Submit Thesis Proposal</p>
+<p class="text-xs text-on-surface-variant">In 3 days</p>
+</div>
+<span class="material-symbols-outlined text-outline">chevron_right</span>
+</div>
+<!-- Task Item 3 -->
+<div class="bg-surface-container-lowest p-4 rounded-xl flex items-center gap-4 transition-all hover:translate-x-2">
+<div class="w-10 h-10 rounded-full bg-secondary-fixed text-on-secondary-fixed flex items-center justify-center">
+<span class="material-symbols-outlined text-lg">assignment</span>
+</div>
+<div class="flex-1">
+<p class="font-bold text-sm">Calculus Homework 4</p>
+<p class="text-xs text-on-surface-variant">Friday, 5:00 PM</p>
+</div>
+<span class="material-symbols-outlined text-outline">chevron_right</span>
+</div>
+</div>
+</div>
+<!-- Recent Activity Feed (Span 7) -->
+<div class="col-span-12 lg:col-span-7 bg-surface-container-highest rounded-xl p-8">
+<h3 class="text-xl font-bold mb-8">Recent Activity</h3>
+<div class="space-y-6">
+<div class="flex gap-4 relative">
+<div class="w-2 bg-primary rounded-full absolute left-4 h-full opacity-10"></div>
+<div class="z-10 w-8 h-8 rounded-full bg-primary flex items-center justify-center ring-4 ring-surface-container-highest">
+<span class="material-symbols-outlined text-on-primary text-xs">check</span>
+</div>
+<div>
+<p class="text-sm font-bold">Completed Lesson: <span class="text-primary">Introduction to Quantum Gravity</span></p>
+<p class="text-xs text-on-surface-variant">Today, 2:14 PM • Duration: 45m</p>
+</div>
+</div>
+<div class="flex gap-4 relative">
+<div class="z-10 w-8 h-8 rounded-full bg-secondary flex items-center justify-center ring-4 ring-surface-container-highest">
+<span class="material-symbols-outlined text-on-secondary text-xs">quiz</span>
+</div>
+<div>
+<p class="text-sm font-bold">Passed Quiz: <span class="text-primary">Linear Algebra Foundations</span></p>
+<p class="text-xs text-on-surface-variant">Yesterday, 5:30 PM • Scored 92%</p>
+</div>
+</div>
+<div class="flex gap-4 relative">
+<div class="z-10 w-8 h-8 rounded-full bg-tertiary flex items-center justify-center ring-4 ring-surface-container-highest">
+<span class="material-symbols-outlined text-on-tertiary text-xs">psychology</span>
+</div>
+<div>
+<p class="text-sm font-bold">AI Tutor Session: <span class="text-primary">Special Relativity Clarifications</span></p>
+<p class="text-xs text-on-surface-variant">Oct 24, 11:15 AM • 12 interactions</p>
+</div>
+</div>
+<div class="flex gap-4 relative">
+<div class="z-10 w-8 h-8 rounded-full bg-primary-fixed-dim flex items-center justify-center ring-4 ring-surface-container-highest">
+<span class="material-symbols-outlined text-on-primary-container text-xs">history_edu</span>
+</div>
+<div>
+<p class="text-sm font-bold">Earned Badge: <span class="text-primary">Consistency King (14 Day Streak)</span></p>
+<p class="text-xs text-on-surface-variant">Oct 23, 9:00 PM</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- FAB (Suppressed on Dashboard context as per rules, but included for system capability if needed elsewhere) -->
+</body></html>

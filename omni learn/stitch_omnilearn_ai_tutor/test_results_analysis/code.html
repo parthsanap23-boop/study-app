@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Lumina AI - Test Analysis</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "error-container": "#ffdad6",
+                        "surface-container-low": "#f2f3fa",
+                        "primary": "#00497d",
+                        "tertiary-fixed": "#a3f69c",
+                        "inverse-primary": "#9fcaff",
+                        "error": "#ba1a1a",
+                        "on-surface": "#191c20",
+                        "surface-container-high": "#e6e8ee",
+                        "on-secondary-fixed-variant": "#324863",
+                        "on-surface-variant": "#414750",
+                        "on-primary-fixed-variant": "#00497d",
+                        "on-background": "#191c20",
+                        "surface-bright": "#f8f9ff",
+                        "secondary": "#4a607c",
+                        "secondary-container": "#c8dfff",
+                        "on-tertiary-container": "#99ec93",
+                        "inverse-surface": "#2e3135",
+                        "inverse-on-surface": "#eff0f7",
+                        "on-error": "#ffffff",
+                        "on-tertiary-fixed-variant": "#005312",
+                        "secondary-fixed": "#d1e4ff",
+                        "on-primary-fixed": "#001d36",
+                        "tertiary-container": "#1c6d24",
+                        "primary-container": "#0061a4",
+                        "background": "#f8f9ff",
+                        "on-secondary": "#ffffff",
+                        "surface-tint": "#0061a4",
+                        "outline": "#717782",
+                        "outline-variant": "#c1c7d2",
+                        "on-tertiary-fixed": "#002204",
+                        "surface-container-highest": "#e1e2e8",
+                        "primary-fixed-dim": "#9fcaff",
+                        "tertiary-fixed-dim": "#88d982",
+                        "surface-dim": "#d8dae0",
+                        "surface-container": "#eceef4",
+                        "surface": "#f8f9ff",
+                        "secondary-fixed-dim": "#b1c8e8",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary": "#005312",
+                        "on-error-container": "#93000a",
+                        "on-primary": "#ffffff",
+                        "on-secondary-fixed": "#021d35",
+                        "surface-variant": "#e1e2e8",
+                        "on-tertiary": "#ffffff",
+                        "primary-fixed": "#d1e4ff",
+                        "on-secondary-container": "#4c627e",
+                        "on-primary-container": "#c0dbff"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "xxl": "1.5rem",
+                        "full": "9999px"
+                    },
+                    fontFamily: {
+                        "headline": ["Plus Jakarta Sans"],
+                        "body": ["Manrope"],
+                        "label": ["Manrope"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Manrope', sans-serif; }
+        h1, h2, h3, h4 { font-family: 'Plus Jakarta Sans', sans-serif; }
+    </style>
+</head>
+<body class="bg-background text-on-surface">
+<!-- SideNavBar (Shared Component) -->
+<aside class="h-full w-64 fixed left-0 top-0 bg-[#f2f3fa] dark:bg-slate-900 flex flex-col py-6 px-4 z-50">
+<div class="mb-10 px-4">
+<h1 class="text-xl font-bold text-[#0061A4] dark:text-blue-400">Lumina AI</h1>
+<p class="text-xs font-medium text-slate-500 uppercase tracking-widest mt-1">Premium Learning</p>
+</div>
+<nav class="flex-1 space-y-2">
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors rounded-xl group" href="#">
+<span class="material-symbols-outlined group-active:scale-90 transition-transform">dashboard</span>
+<span class="font-medium text-sm">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors rounded-xl group" href="#">
+<span class="material-symbols-outlined group-active:scale-90 transition-transform">psychology</span>
+<span class="font-medium text-sm">AI Tutor</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors rounded-xl group" href="#">
+<span class="material-symbols-outlined group-active:scale-90 transition-transform">quiz</span>
+<span class="font-medium text-sm">Mock Tests</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors rounded-xl group" href="#">
+<span class="material-symbols-outlined group-active:scale-90 transition-transform">timer</span>
+<span class="font-medium text-sm">Active Session</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#0061A4] dark:text-blue-300 font-bold border-r-4 border-[#0061A4] bg-white/50 rounded-l-xl group" href="#">
+<span class="material-symbols-outlined group-active:scale-90 transition-transform">insights</span>
+<span class="font-medium text-sm">Analysis</span>
+</a>
+</nav>
+<div class="mt-auto space-y-4">
+<button class="w-full bg-primary text-white py-3 rounded-full font-semibold text-sm hover:opacity-90 transition-all scale-95 active:scale-90">
+                Upgrade to Pro
+            </button>
+<div class="pt-4 space-y-1">
+<a class="flex items-center gap-3 px-4 py-2 text-slate-500 dark:text-slate-400 hover:bg-slate-200 transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined text-lg">settings</span>
+<span class="text-xs font-medium">Settings</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-slate-500 dark:text-slate-400 hover:bg-slate-200 transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined text-lg">help_outline</span>
+<span class="text-xs font-medium">Help</span>
+</a>
+</div>
+</div>
+</aside>
+<!-- TopAppBar (Shared Component) -->
+<header class="fixed top-0 right-0 w-[calc(100%-16rem)] flex justify-between items-center h-16 px-8 z-40 bg-[#f8f9ff]/70 dark:bg-slate-950/70 backdrop-blur-xl">
+<div class="flex items-center gap-8">
+<div class="relative group">
+<span class="absolute inset-y-0 left-3 flex items-center text-slate-400">
+<span class="material-symbols-outlined text-lg">search</span>
+</span>
+<input class="pl-10 pr-4 py-1.5 bg-surface-container-high border-none rounded-lg text-sm w-64 focus:ring-2 focus:ring-primary/20 transition-all" placeholder="Search insights..." type="text"/>
+</div>
+<nav class="hidden md:flex gap-6">
+<a class="text-slate-600 font-semibold text-sm hover:text-[#0061A4] transition-all" href="#">Curriculum</a>
+<a class="text-slate-600 font-semibold text-sm hover:text-[#0061A4] transition-all" href="#">Resources</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-slate-600 hover:bg-surface-container-high p-2 rounded-full transition-all">notifications</button>
+<button class="material-symbols-outlined text-slate-600 hover:bg-surface-container-high p-2 rounded-full transition-all">dark_mode</button>
+<div class="h-8 w-px bg-slate-200 mx-2"></div>
+<button class="bg-primary text-white px-5 py-2 rounded-full text-sm font-semibold hover:opacity-90 transition-all opacity-80 hover:opacity-100">
+                Start Session
+            </button>
+<img class="w-10 h-10 rounded-full border-2 border-white shadow-sm" data-alt="Portrait of a young male student with a friendly expression in a brightly lit modern library background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCCPXhGanIN2wX8YWPLpUISIOPX2NL_D8IO9_JHuevsv7Aa8B86V-msfjx1CguUwhxuJV33O3Zyxqz-SN47D3bKDqOLCf7He60fri08lMPihXwZfPAvj7myRMIxP2oexlHHcFl1170_QHM9M09e1mAObT4rvf4wJSHnMEqK2Wu6yfQF92J0R1CFDWOeOjIyQTnlp1M3B0hk2SKA6KcyymILybewfkNjbR0hGFY1bxOYGJxBJkEKMhGON9q-NBARosLkru1Ir-I0ACU"/>
+</div>
+</header>
+<!-- Main Content -->
+<main class="ml-64 pt-24 px-8 pb-12 min-h-screen">
+<div class="max-w-6xl mx-auto space-y-10">
+<!-- Header Section -->
+<section class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div>
+<span class="text-primary font-bold tracking-widest text-xs uppercase bg-primary-container/10 px-3 py-1 rounded-full">Results Dashboard</span>
+<h2 class="text-4xl font-extrabold mt-2 tracking-tight text-on-surface">Diagnostic Mock #04 <span class="text-primary/40 font-normal">Analysis</span></h2>
+<p class="text-on-surface-variant mt-2 text-lg">Completed on October 24, 2023 • Advanced Quantum Mechanics</p>
+</div>
+<div class="flex gap-3">
+<button class="flex items-center gap-2 px-6 py-3 bg-surface-container-lowest text-on-surface font-bold rounded-full hover:bg-surface-container-low transition-all">
+<span class="material-symbols-outlined">download</span>
+                        Export PDF
+                    </button>
+<button class="flex items-center gap-2 px-6 py-3 bg-primary text-on-primary font-bold rounded-full hover:opacity-90 transition-all shadow-lg shadow-primary/10">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">share</span>
+                        Share Report
+                    </button>
+</div>
+</section>
+<!-- Metrics Bento Grid -->
+<section class="grid grid-cols-1 md:grid-cols-4 gap-6">
+<div class="md:col-span-2 bg-surface-container-lowest rounded-[2rem] p-8 flex flex-col justify-between min-h-[220px]">
+<div class="flex justify-between items-start">
+<p class="text-on-surface-variant font-semibold">Overall Proficiency</p>
+<span class="material-symbols-outlined text-primary bg-primary-container/10 p-2 rounded-xl">auto_graph</span>
+</div>
+<div class="flex items-baseline gap-4 mt-4">
+<span class="text-7xl font-black text-on-surface tracking-tighter">84<span class="text-3xl text-primary/30">%</span></span>
+<div class="flex flex-col">
+<span class="text-tertiary font-bold flex items-center text-sm">
+<span class="material-symbols-outlined text-sm">arrow_upward</span> +12%
+                            </span>
+<span class="text-xs text-on-surface-variant">vs last attempt</span>
+</div>
+</div>
+<div class="w-full bg-surface-container-high h-2 rounded-full mt-6 overflow-hidden">
+<div class="bg-primary h-full w-[84%] rounded-full"></div>
+</div>
+</div>
+<div class="bg-surface-container-low rounded-[2rem] p-8 flex flex-col justify-between">
+<div>
+<p class="text-on-surface-variant font-semibold">Accuracy Rate</p>
+<span class="material-symbols-outlined text-tertiary mt-2">verified</span>
+</div>
+<div class="mt-4">
+<span class="text-5xl font-extrabold text-on-surface">92<span class="text-xl opacity-40">%</span></span>
+<p class="text-sm text-on-surface-variant mt-1">46/50 Questions</p>
+</div>
+</div>
+<div class="bg-surface-container-low rounded-[2rem] p-8 flex flex-col justify-between">
+<div>
+<p class="text-on-surface-variant font-semibold">Time Invested</p>
+<span class="material-symbols-outlined text-secondary mt-2">timer</span>
+</div>
+<div class="mt-4">
+<span class="text-5xl font-extrabold text-on-surface">42<span class="text-xl opacity-40">m</span></span>
+<p class="text-sm text-on-surface-variant mt-1">8m ahead of schedule</p>
+</div>
+</div>
+</section>
+<!-- Analysis Main View -->
+<section class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Topic Breakdown -->
+<div class="lg:col-span-2 bg-surface-container-lowest rounded-[2.5rem] p-10">
+<h3 class="text-2xl font-bold text-on-surface mb-8">Performance by Domain</h3>
+<div class="space-y-8">
+<div class="group">
+<div class="flex justify-between mb-3 items-end">
+<div>
+<h4 class="font-bold text-lg">Wave-Particle Duality</h4>
+<p class="text-sm text-on-surface-variant">12 Questions • High Complexity</p>
+</div>
+<span class="font-black text-primary">95%</span>
+</div>
+<div class="w-full bg-surface-container-low h-3 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[95%] rounded-full group-hover:bg-primary-container transition-colors"></div>
+</div>
+</div>
+<div class="group">
+<div class="flex justify-between mb-3 items-end">
+<div>
+<h4 class="font-bold text-lg">Schrödinger Equation</h4>
+<p class="text-sm text-on-surface-variant">15 Questions • Medium Complexity</p>
+</div>
+<span class="font-black text-primary">82%</span>
+</div>
+<div class="w-full bg-surface-container-low h-3 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[82%] rounded-full group-hover:bg-primary-container transition-colors"></div>
+</div>
+</div>
+<div class="group">
+<div class="flex justify-between mb-3 items-end">
+<div>
+<h4 class="font-bold text-lg">Quantum Entanglement</h4>
+<p class="text-sm text-on-surface-variant">10 Questions • Expert Complexity</p>
+</div>
+<span class="font-black text-error">54%</span>
+</div>
+<div class="w-full bg-surface-container-low h-3 rounded-full overflow-hidden">
+<div class="bg-error h-full w-[54%] rounded-full opacity-80 group-hover:opacity-100 transition-opacity"></div>
+</div>
+</div>
+<div class="group">
+<div class="flex justify-between mb-3 items-end">
+<div>
+<h4 class="font-bold text-lg">Angular Momentum</h4>
+<p class="text-sm text-on-surface-variant">13 Questions • Low Complexity</p>
+</div>
+<span class="font-black text-primary">88%</span>
+</div>
+<div class="w-full bg-surface-container-low h-3 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[88%] rounded-full group-hover:bg-primary-container transition-colors"></div>
+</div>
+</div>
+</div>
+<div class="mt-12 p-8 bg-surface-container-low rounded-3xl flex items-center gap-6">
+<div class="flex-1">
+<p class="text-on-surface font-bold text-lg">Want to deep dive into 'Quantum Entanglement'?</p>
+<p class="text-on-surface-variant text-sm mt-1">You missed 4 questions on non-locality principles.</p>
+</div>
+<button class="bg-surface-container-lowest text-primary px-6 py-3 rounded-2xl font-bold hover:bg-white transition-all shadow-sm">Review Errors</button>
+</div>
+</div>
+<!-- AI Insights Sidebar -->
+<div class="flex flex-col gap-8">
+<!-- AI Insight Pane -->
+<div class="bg-primary text-white rounded-[2.5rem] p-8 relative overflow-hidden">
+<!-- Decorative glow -->
+<div class="absolute -top-20 -right-20 w-64 h-64 bg-primary-container rounded-full blur-[80px] opacity-40"></div>
+<div class="relative z-10">
+<div class="flex items-center gap-2 mb-6">
+<span class="material-symbols-outlined text-tertiary-fixed" style="font-variation-settings: 'FILL' 1;">psychology</span>
+<span class="font-bold uppercase tracking-widest text-[10px] text-primary-fixed">Lumina AI Insights</span>
+</div>
+<h3 class="text-2xl font-bold leading-tight mb-4 italic">"Your analytical reasoning is top-tier, but watch for notation fatigue."</h3>
+<div class="space-y-6 mt-8">
+<div class="flex gap-4">
+<div class="h-8 w-8 rounded-lg bg-white/10 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-sm">thumb_up</span>
+</div>
+<div>
+<p class="font-bold text-sm">Strength: Conceptual Math</p>
+<p class="text-xs text-primary-fixed/80 leading-relaxed mt-1">You solved 100% of integration-based problems within 45 seconds each.</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="h-8 w-8 rounded-lg bg-white/10 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-sm">warning</span>
+</div>
+<div>
+<p class="font-bold text-sm">Review: Bell's Inequality</p>
+<p class="text-xs text-primary-fixed/80 leading-relaxed mt-1">Most errors occurred in the final 10 minutes, suggesting a drop in focus.</p>
+</div>
+</div>
+</div>
+<button class="w-full mt-10 py-4 bg-tertiary-fixed text-on-tertiary-fixed font-black rounded-xxl hover:scale-[1.02] active:scale-95 transition-all">
+                                Ask AI Tutor about incorrect questions
+                            </button>
+</div>
+</div>
+<!-- Learning Path Card -->
+<div class="bg-surface-container-high rounded-[2.5rem] p-8">
+<h4 class="font-bold text-on-surface mb-4">Recommended Next Steps</h4>
+<div class="space-y-4">
+<div class="flex items-center gap-4 bg-surface-container-lowest p-4 rounded-2xl">
+<span class="material-symbols-outlined text-tertiary">play_circle</span>
+<div>
+<p class="text-sm font-bold">Watch: Bell's Theorem</p>
+<p class="text-xs text-on-surface-variant">12 min video • Recommended</p>
+</div>
+</div>
+<div class="flex items-center gap-4 bg-surface-container-lowest p-4 rounded-2xl">
+<span class="material-symbols-outlined text-primary">edit_document</span>
+<div>
+<p class="text-sm font-bold">Practice: Matrix Algebra</p>
+<p class="text-xs text-on-surface-variant">15 Qs • Topic Reinforcement</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Detailed Breakdown (Editorial Asymmetry) -->
+<section class="bg-surface-container-lowest rounded-[3rem] p-12">
+<div class="flex justify-between items-center mb-12">
+<h3 class="text-3xl font-black text-on-surface">Time Management <span class="text-primary/20">Heatmap</span></h3>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-primary/20"></div>
+<span class="text-xs font-bold text-on-surface-variant">Fast</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-primary"></div>
+<span class="text-xs font-bold text-on-surface-variant">Slow</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-10 gap-2 mb-8">
+<!-- Generating a row of blocks representing questions -->
+<div class="h-16 bg-primary/20 rounded-lg hover:ring-2 ring-primary transition-all cursor-help" title="Q1: Correct (12s)"></div>
+<div class="h-16 bg-primary/30 rounded-lg"></div>
+<div class="h-16 bg-primary/10 rounded-lg"></div>
+<div class="h-16 bg-primary/60 rounded-lg"></div>
+<div class="h-16 bg-primary/40 rounded-lg"></div>
+<div class="h-16 bg-primary/20 rounded-lg"></div>
+<div class="h-16 bg-primary/90 rounded-lg border-2 border-error"></div>
+<div class="h-16 bg-primary/20 rounded-lg"></div>
+<div class="h-16 bg-primary/10 rounded-lg"></div>
+<div class="h-16 bg-primary/10 rounded-lg"></div>
+<div class="h-16 bg-primary/20 rounded-lg"></div>
+<div class="h-16 bg-primary/30 rounded-lg"></div>
+<div class="h-16 bg-primary/10 rounded-lg"></div>
+<div class="h-16 bg-primary/60 rounded-lg"></div>
+<div class="h-16 bg-primary/40 rounded-lg"></div>
+<div class="h-16 bg-primary/20 rounded-lg"></div>
+<div class="h-16 bg-error/40 rounded-lg border-2 border-error"></div>
+<div class="h-16 bg-primary/20 rounded-lg"></div>
+<div class="h-16 bg-primary/10 rounded-lg"></div>
+<div class="h-16 bg-primary/10 rounded-lg"></div>
+</div>
+<p class="text-center text-on-surface-variant text-sm font-medium">Visualization shows time spent per question. Red borders indicate incorrect responses.</p>
+</section>
+</div>
+</main>
+<!-- Contextual FAB (Suppressed on Analysis Screen as per logic, but here's a minimized version if really needed for focus) -->
+<!-- Suppressed based on: "You MUST suppress the FAB on Settings, Profile, Details, and Transactional screens." -->
+</body></html>

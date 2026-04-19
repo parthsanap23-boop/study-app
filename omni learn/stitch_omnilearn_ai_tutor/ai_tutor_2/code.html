@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Lumina AI - AI Tutor</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "error-container": "#ffdad6",
+                        "surface-container-low": "#f2f3fa",
+                        "primary": "#00497d",
+                        "tertiary-fixed": "#a3f69c",
+                        "inverse-primary": "#9fcaff",
+                        "error": "#ba1a1a",
+                        "on-surface": "#191c20",
+                        "surface-container-high": "#e6e8ee",
+                        "on-secondary-fixed-variant": "#324863",
+                        "on-surface-variant": "#414750",
+                        "on-primary-fixed-variant": "#00497d",
+                        "on-background": "#191c20",
+                        "surface-bright": "#f8f9ff",
+                        "secondary": "#4a607c",
+                        "secondary-container": "#c8dfff",
+                        "on-tertiary-container": "#99ec93",
+                        "inverse-surface": "#2e3135",
+                        "inverse-on-surface": "#eff0f7",
+                        "on-error": "#ffffff",
+                        "on-tertiary-fixed-variant": "#005312",
+                        "secondary-fixed": "#d1e4ff",
+                        "on-primary-fixed": "#001d36",
+                        "tertiary-container": "#1c6d24",
+                        "primary-container": "#0061a4",
+                        "background": "#f8f9ff",
+                        "on-secondary": "#ffffff",
+                        "surface-tint": "#0061a4",
+                        "outline": "#717782",
+                        "outline-variant": "#c1c7d2",
+                        "on-tertiary-fixed": "#002204",
+                        "surface-container-highest": "#e1e2e8",
+                        "primary-fixed-dim": "#9fcaff",
+                        "tertiary-fixed-dim": "#88d982",
+                        "surface-dim": "#d8dae0",
+                        "surface-container": "#eceef4",
+                        "surface": "#f8f9ff",
+                        "secondary-fixed-dim": "#b1c8e8",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary": "#005312",
+                        "on-error-container": "#93000a",
+                        "on-primary": "#ffffff",
+                        "on-secondary-fixed": "#021d35",
+                        "surface-variant": "#e1e2e8",
+                        "on-tertiary": "#ffffff",
+                        "primary-fixed": "#d1e4ff",
+                        "on-secondary-container": "#4c627e",
+                        "on-primary-container": "#c0dbff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "3xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Plus Jakarta Sans"],
+                        "body": ["Manrope"],
+                        "label": ["Manrope"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Manrope', sans-serif; }
+        h1, h2, h3 { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface overflow-hidden h-screen flex">
+<!-- SideNavBar -->
+<aside class="h-full w-64 fixed left-0 top-0 bg-[#f2f3fa] dark:bg-slate-900 flex flex-col py-6 px-4 z-50">
+<div class="mb-10 px-2 flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-3xl" style="font-variation-settings: 'FILL' 1;">lightbulb</span>
+<h1 class="text-xl font-bold text-[#0061A4] dark:text-blue-400">Lumina AI</h1>
+</div>
+<nav class="flex-1 flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-3 rounded-xl text-slate-500 dark:text-slate-400 font-medium text-sm hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors scale-95 active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+                Dashboard
+            </a>
+<a class="flex items-center gap-3 px-3 py-3 rounded-xl text-[#0061A4] dark:text-blue-300 font-bold text-sm border-r-4 border-[#0061A4] hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors scale-95 active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="psychology" style="font-variation-settings: 'FILL' 1;">psychology</span>
+                AI Tutor
+            </a>
+<a class="flex items-center gap-3 px-3 py-3 rounded-xl text-slate-500 dark:text-slate-400 font-medium text-sm hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors scale-95 active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="quiz">quiz</span>
+                Mock Tests
+            </a>
+<a class="flex items-center gap-3 px-3 py-3 rounded-xl text-slate-500 dark:text-slate-400 font-medium text-sm hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors scale-95 active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="timer">timer</span>
+                Active Session
+            </a>
+<a class="flex items-center gap-3 px-3 py-3 rounded-xl text-slate-500 dark:text-slate-400 font-medium text-sm hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors scale-95 active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="insights">insights</span>
+                Analysis
+            </a>
+</nav>
+<div class="mt-auto flex flex-col gap-1">
+<div class="p-4 mb-4 bg-primary-container rounded-3xl text-on-primary-container relative overflow-hidden group">
+<p class="text-xs font-bold uppercase tracking-widest mb-1">Upgrade to Pro</p>
+<p class="text-sm opacity-90 leading-tight mb-3">Unlock advanced math solver &amp; live mentor access.</p>
+<button class="bg-primary text-white text-xs font-bold py-2 px-4 rounded-full w-full hover:shadow-lg transition-all active:scale-95">Go Premium</button>
+</div>
+<a class="flex items-center gap-3 px-3 py-3 rounded-xl text-slate-500 dark:text-slate-400 font-medium text-sm hover:bg-slate-200 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+                Settings
+            </a>
+<a class="flex items-center gap-3 px-3 py-3 rounded-xl text-slate-500 dark:text-slate-400 font-medium text-sm hover:bg-slate-200 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+                Help
+            </a>
+</div>
+</aside>
+<!-- Main Viewport -->
+<main class="flex-1 ml-64 flex flex-col h-full bg-surface">
+<!-- TopAppBar -->
+<header class="fixed top-0 right-0 w-[calc(100%-16rem)] flex justify-between items-center h-16 px-8 z-40 bg-[#f8f9ff]/70 dark:bg-slate-950/70 backdrop-blur-xl">
+<div class="flex items-center gap-8">
+<div class="bg-surface-container-high px-4 py-2 rounded-full flex items-center gap-3 w-80">
+<span class="material-symbols-outlined text-outline">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm w-full font-body" placeholder="Search concepts, chats, or books..." type="text"/>
+</div>
+<nav class="hidden lg:flex gap-6">
+<a class="text-slate-600 dark:text-slate-400 font-semibold text-sm hover:text-[#0061A4] transition-all" href="#">Curriculum</a>
+<a class="text-slate-600 dark:text-slate-400 font-semibold text-sm hover:text-[#0061A4] transition-all" href="#">Resources</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex gap-2">
+<button class="p-2 rounded-full hover:bg-surface-container transition-all opacity-80 hover:opacity-100">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 rounded-full hover:bg-surface-container transition-all opacity-80 hover:opacity-100">
+<span class="material-symbols-outlined" data-icon="dark_mode">dark_mode</span>
+</button>
+</div>
+<button class="bg-gradient-to-br from-primary to-primary-container text-on-primary font-semibold py-2 px-6 rounded-full text-sm shadow-md hover:shadow-xl transition-all active:scale-95">
+                    Start Session
+                </button>
+<img alt="Student avatar" class="w-10 h-10 rounded-full border-2 border-surface-container-highest" data-alt="Close up portrait of a young male student with glasses looking thoughtfully at the camera in a modern library setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCo0aE_N0WLsy8ANkuwkx9dvWoajJS7tbX-EAD-Fdo9t3Wg0atvC1NmNktZY4bLASYOrV96M3yu-TcZPiJwMHGAoWGC-qTlbIVGHrS_g8AyimwcqH7PqLX7K2244kOq9RKgq28aVGWt9kqN0arF_v_98Ajnp79iRlL5TT2tJbu3QVKPVa_-k3GWDdH7nyGy6k_t5qWmb_adf6pnmfzSLioi0PMetdb5xzt91AYfpCyzwT7Jvg8eXQHdmLy1FVBW68Epv6D8h9n4wsw"/>
+</div>
+</header>
+<!-- Content Canvas -->
+<section class="mt-16 flex flex-1 overflow-hidden">
+<!-- Left Panel: Chat History -->
+<div class="w-80 bg-surface-container-low flex flex-col p-6 gap-6">
+<div class="flex justify-between items-center">
+<h2 class="text-lg font-bold text-on-surface">Recent Chats</h2>
+<button class="p-1.5 bg-surface-container-highest rounded-lg hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-sm">edit_square</span>
+</button>
+</div>
+<div class="flex flex-col gap-2 overflow-y-auto">
+<div class="p-4 bg-surface-container-lowest rounded-2xl shadow-sm border-l-4 border-primary">
+<div class="flex justify-between items-start mb-1">
+<span class="text-xs font-bold text-primary tracking-wide">CALCULUS II</span>
+<span class="text-[10px] text-outline">12m ago</span>
+</div>
+<h3 class="text-sm font-semibold text-on-surface truncate">Understanding Integrals</h3>
+<p class="text-xs text-outline-variant truncate mt-1">Can you explain the substitution...</p>
+</div>
+<div class="p-4 bg-transparent hover:bg-surface-container-high rounded-2xl transition-colors cursor-pointer">
+<div class="flex justify-between items-start mb-1">
+<span class="text-xs font-bold text-outline tracking-wide">ORGANIC CHEM</span>
+<span class="text-[10px] text-outline">2h ago</span>
+</div>
+<h3 class="text-sm font-semibold text-on-surface truncate">Benzene Rings</h3>
+<p class="text-xs text-outline-variant truncate mt-1">I'm struggling with the hybridiz...</p>
+</div>
+<div class="p-4 bg-transparent hover:bg-surface-container-high rounded-2xl transition-colors cursor-pointer">
+<div class="flex justify-between items-start mb-1">
+<span class="text-xs font-bold text-outline tracking-wide">QUANTUM PHYSICS</span>
+<span class="text-[10px] text-outline">Yesterday</span>
+</div>
+<h3 class="text-sm font-semibold text-on-surface truncate">Wave-Particle Duality</h3>
+<p class="text-xs text-outline-variant truncate mt-1">What experiment proved the lig...</p>
+</div>
+</div>
+<div class="mt-auto">
+<div class="bg-tertiary-fixed/30 p-4 rounded-2xl border border-tertiary/10">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-tertiary" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="text-xs font-bold text-tertiary uppercase">Learning Streak</span>
+</div>
+<p class="text-sm font-bold text-on-surface">12 Day Streak!</p>
+<div class="w-full h-1.5 bg-surface-container-high rounded-full mt-2 overflow-hidden">
+<div class="w-[70%] h-full bg-tertiary rounded-full"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Center: Main Chat Window -->
+<div class="flex-1 bg-surface-container-lowest flex flex-col relative">
+<!-- Chat Header -->
+<div class="h-16 px-8 flex items-center justify-between border-b border-surface-container">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary-container" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+</div>
+<div>
+<h2 class="text-base font-bold">Lumina Assistant</h2>
+<p class="text-xs text-tertiary flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-tertiary animate-pulse"></span>
+                                AI Online &amp; Active
+                            </p>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="px-4 py-1.5 rounded-full border border-outline-variant text-xs font-bold hover:bg-surface-container transition-colors">Export Chat</button>
+</div>
+</div>
+<!-- Messages -->
+<div class="flex-1 overflow-y-auto p-8 space-y-8"><!-- AI Welcome -->
+<div class="max-w-2xl mx-auto flex gap-4">
+<div class="w-8 h-8 rounded-lg bg-surface-container-high flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary text-sm">smart_toy</span>
+</div>
+<div class="space-y-4">
+<h3 class="text-2xl font-bold font-headline leading-tight text-on-surface">Hello, Jordan! 👋</h3>
+<p class="text-lg font-body text-on-surface-variant leading-relaxed">
+            I see you're working on <span class="text-primary font-bold">Advanced Calculus</span> today. I've pulled up your last session's notes. Where would you like to pick up?
+        </p>
+<div class="flex flex-wrap gap-2">
+<button class="px-4 py-2 bg-surface-container-low hover:bg-surface-container-high transition-colors rounded-full text-xs font-semibold">Define Taylor Series</button>
+<button class="px-4 py-2 bg-surface-container-low hover:bg-surface-container-high transition-colors rounded-full text-xs font-semibold">Practice Integrals</button>
+<button class="px-4 py-2 bg-surface-container-low hover:bg-surface-container-high transition-colors rounded-full text-xs font-semibold">Help with Homework</button>
+</div>
+</div>
+</div>
+<!-- User Message with Uploaded Image -->
+<div class="max-w-2xl mx-auto flex flex-col items-end gap-3">
+<div class="bg-primary text-on-primary p-5 rounded-3xl rounded-tr-none shadow-sm">
+<p class="text-base">Can you help me solve this problem from my textbook? I'm stuck on the third step.</p>
+</div>
+<div class="relative w-72 h-48 rounded-2xl overflow-hidden border-4 border-white shadow-lg group ring-1 ring-outline-variant/20">
+<img alt="Handwritten math problem" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJLxCTiTeFac5TPBRx3Jd_k9fzU_jnQ5_vfhKwV7PCTiULDH2E8bSMU6P88AVfqr800fY63ykstV8ymGmj5OGN9nL1aqWgzwruIxWmCnZLCdtL_GsDjA_k8dz7Ur8R3AHG_KLoCuWMnuNwuvXo3bteJXLl8OCSl4nbLm2am-Am3W-kef8s7VW0Vd7TWPwoy9PF3_I46ZYBHbHjwrKjAL0bUjtXPbYx40ZnZH_q5VCWOsnz1CygU8BrKSe1MTXQhUlxK1SyERYtQRM"/>
+<div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-3xl">zoom_in</span>
+</div>
+<div class="absolute top-2 left-2 bg-black/60 text-white text-[10px] px-2 py-1 rounded-md font-bold backdrop-blur-md flex items-center gap-1">
+<span class="material-symbols-outlined text-[10px]">image</span> ATTACHMENT
+        </div>
+</div>
+</div>
+<!-- AI Response to Image -->
+<div class="max-w-2xl mx-auto flex gap-4">
+<div class="w-8 h-8 rounded-lg bg-surface-container-high flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary text-sm">smart_toy</span>
+</div>
+<div class="bg-surface-container-low p-6 rounded-3xl rounded-tl-none space-y-4 shadow-sm">
+<p class="text-base text-on-surface-variant font-body">
+            Analysing the image... It looks like a <span class="font-bold text-primary">definite integral</span> involving a trigonometric substitution. 
+        </p>
+<div class="p-4 bg-surface-container-lowest rounded-2xl border-l-4 border-primary italic text-sm text-on-surface">
+            "I see the substitution you've started. The trick here is to identify that √(a² - x²) suggests using x = a·sin(θ)."
+        </div>
+<p class="text-base text-on-surface-variant">
+            You're currently on the right track with the first substitution. Would you like me to walk through the third step where you got stuck?
+        </p>
+</div>
+</div></div>
+<!-- Input Area -->
+<div class="p-8">
+<div class="max-w-3xl mx-auto bg-surface-container-high p-2 rounded-3xl shadow-lg flex items-end gap-2 focus-within:ring-2 focus-within:ring-primary/20 transition-all"><div class="flex flex-col flex-1">
+<textarea class="w-full bg-transparent border-none focus:ring-0 text-on-surface font-body p-4 min-h-[60px] max-h-40 resize-none" placeholder="Ask your doubt or upload a problem image..."></textarea>
+</div>
+<div class="flex gap-2 p-2">
+<button class="flex items-center gap-2 px-4 py-3 bg-primary/10 text-primary rounded-2xl hover:bg-primary/20 transition-all font-bold text-xs">
+<span class="material-symbols-outlined">photo_camera</span>
+<span>Upload Photo</span>
+</button>
+<button class="p-3 bg-surface-container-lowest rounded-2xl hover:bg-white transition-all text-outline hover:text-primary">
+<span class="material-symbols-outlined">mic</span>
+</button>
+<button class="p-3 bg-primary text-white rounded-2xl hover:bg-primary-container transition-all shadow-md active:scale-90">
+<span class="material-symbols-outlined">send</span>
+</button>
+</div></div>
+<p class="text-center text-[10px] text-outline-variant mt-4 uppercase tracking-widest font-bold">Lumina AI can make mistakes. Verify important facts.</p>
+</div>
+</div>
+<!-- Right Panel: Resource Library -->
+<div class="w-96 bg-surface-container-low border-l border-surface-container flex flex-col p-8 gap-8 overflow-y-auto">
+<div>
+<h2 class="text-lg font-bold mb-1">Recommended Learning</h2>
+<p class="text-sm text-outline-variant">AI-curated based on your session</p>
+</div>
+<div class="space-y-4">
+<div class="group cursor-pointer">
+<div class="w-full aspect-video rounded-2xl overflow-hidden mb-3 relative">
+<img alt="Video tutorial cover" class="w-full h-full object-cover transition-transform group-hover:scale-110 duration-500" data-alt="Cinematic close-up of a blackboard filled with complex physics and math equations in chalk with soft ambient light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBAD_LTAJqKnjUxwVc9ZxUejNM3xtw9BLZuihCrQc52rbObvvGLkMnLQviMl7CUWVUIhSivupv_oUqwjsLmOPuchkxl6z6aetUeKq2i8NAjVW-nObvg4mo1j426nBcmmkBXUu4BBdJt-G00Tv0VyG45yFWjiZjzekSv0fWksBkpko07Fk_1ffnehTCc_DnKUK0GfaQx2qRSxoJsVTlWZoCOIhnhxY43vJgkeHqKvz80XOEhV55kDJ4bv-3tykUPcvr30iiR8xp7UxI"/>
+<div class="absolute inset-0 bg-black/30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-white text-4xl" style="font-variation-settings: 'FILL' 1;">play_circle</span>
+</div>
+<div class="absolute bottom-2 right-2 bg-black/60 text-white text-[10px] px-2 py-1 rounded-md font-bold backdrop-blur-md">14:20</div>
+</div>
+<h4 class="text-sm font-bold text-on-surface line-clamp-2">Mastering Trigonometric Substitution: Level 2</h4>
+<p class="text-xs text-outline mt-1">MIT OpenCourseWare</p>
+</div>
+<div class="p-5 bg-surface-container-lowest rounded-3xl space-y-3 shadow-sm border border-transparent hover:border-primary/20 transition-all">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-orange-100 text-orange-600 flex items-center justify-center">
+<span class="material-symbols-outlined">auto_stories</span>
+</div>
+<div>
+<h4 class="text-sm font-bold">Chapter 8.4 Summary</h4>
+<p class="text-xs text-outline">PDF Handbook • 2MB</p>
+</div>
+</div>
+<button class="w-full py-2 bg-surface-container-high rounded-xl text-xs font-bold hover:bg-primary hover:text-white transition-all">Read Insight</button>
+</div>
+<div class="p-5 bg-surface-container-lowest rounded-3xl space-y-3 shadow-sm border border-transparent hover:border-primary/20 transition-all">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center">
+<span class="material-symbols-outlined">quiz</span>
+</div>
+<div>
+<h4 class="text-sm font-bold">Concept Checkpoint</h4>
+<p class="text-xs text-outline">5 Quick Questions</p>
+</div>
+</div>
+<button class="w-full py-2 bg-surface-container-high rounded-xl text-xs font-bold hover:bg-primary hover:text-white transition-all">Test Knowledge</button>
+</div>
+</div>
+<div class="mt-4">
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-sm font-bold uppercase tracking-widest text-outline">Shared in Chat</h3>
+<button class="text-xs font-bold text-primary">View All</button>
+</div>
+<div class="grid grid-cols-3 gap-2">
+<div class="aspect-square bg-surface-container-high rounded-xl overflow-hidden cursor-pointer hover:opacity-80 transition-opacity">
+<img class="w-full h-full object-cover" data-alt="Close up of study notes on a wooden table with coffee and pens" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBe532VP-hrf01IoCxKv_4B9kXUEqOea1fHx8XqWFweafBHkTZQrdw45wBCO01FjhKvEGHWj_61zddA3Lixg_U5MSUkMM50vew21XBlGCqwTiHn4-W3jIsA0dzGAmkc9qdT3xtXohUGu5-KlvP2b0v4S1FHBJg5WBeaKHoM9q7-RunNtsTLMtvZKjVCtO6-XUDzbodjZzopAtIsi1RdgHGEK3c5PkZZK2cfMg3PZS6k8aT78Xp2Ve_BHbyGGyt-pfZEB-kJI8uOP0E"/>
+</div>
+<div class="aspect-square bg-surface-container-high rounded-xl overflow-hidden cursor-pointer hover:opacity-80 transition-opacity">
+<img class="w-full h-full object-cover" data-alt="Macro photo of a pencil tip writing on paper" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCp8d_8wAYsHV_hlCxnOjn5SQent1mz61jPzkQww1Wr7THTd-dC3p0xcMCu0aY5YNSS0HW61_oUSRJyl-KBY8YuIlX5TPrypN5oFe8YpI8qYDxYX9klBXOmZZrQzZUys7z8OSQ5w8MENwBoQkOZpYc5mfJbBftnBvgK-Dy3N9UcZA2quJJjhOS1n8cLk4P_mfP6z9_CZSSU7vHkmm6wv_EAl7HfD8nfmg3dE2FpjY0Dol-pbA5ZY-pE2Guiv8JHK-BO96pt8qNvtLY"/>
+</div>
+<div class="aspect-square bg-surface-container-high rounded-xl flex items-center justify-center cursor-pointer hover:bg-primary/10 transition-all">
+<span class="material-symbols-outlined text-outline">plus_one</span>
+</div>
+</div>
+</div>
+<!-- Quick Action FAB (Suppressed based on logic but using a contained version) -->
+<div class="mt-auto">
+<button class="w-full bg-on-surface text-surface py-4 rounded-3xl flex items-center justify-center gap-3 font-bold hover:shadow-2xl transition-all scale-95 active:scale-90">
+<span class="material-symbols-outlined">lightbulb</span>
+                        Ask AI Focus Hint
+                    </button>
+</div>
+</div>
+</section>
+</main>
+</body></html>
